@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static pl.edu.agh.dsrg.sr.chat.protos.ChatOperationProtos.*;
 import static pl.edu.agh.dsrg.sr.chat.protos.ChatOperationProtos.ChatAction.*;
@@ -20,12 +21,12 @@ import static pl.edu.agh.dsrg.sr.chat.protos.Main.log;
 public class SynchronizationMessageReceiver extends ReceiverAdapter {
     private Map<String, List<String>> ChannelToUserMap;
     private ActiveChannelsStateUpdater activeChannelsStateUpdater;
-    private JChannel chatManagement;
+    private JChannel channelsSynchronizer;
 
-    public SynchronizationMessageReceiver(ActiveChannelsStateUpdater activeChannelsStateUpdater, JChannel chatManagement) {
+    public SynchronizationMessageReceiver(ActiveChannelsStateUpdater activeChannelsStateUpdater, JChannel channelsSynchronizer) {
         ChannelToUserMap = new HashMap<>();
         this.activeChannelsStateUpdater = activeChannelsStateUpdater;
-        this.chatManagement = chatManagement;
+        this.channelsSynchronizer = channelsSynchronizer;
     }
 
     @Override
@@ -50,8 +51,7 @@ public class SynchronizationMessageReceiver extends ReceiverAdapter {
                 else if (actionType == LEAVE) {
                     if (ChannelToUserMap.containsKey(channel)) {
                         ChannelToUserMap.get(channel).remove(user);
-                        if (ChannelToUserMap.get(channel).isEmpty())
-                            ChannelToUserMap.remove(channel);
+                        //if (ChannelToUserMap.get(channel).isEmpty())ChannelToUserMap.remove(channel);
                     }
                 }
             } catch (Exception e) {
@@ -63,6 +63,9 @@ public class SynchronizationMessageReceiver extends ReceiverAdapter {
     }
 
     @Override
+    /** The getState() method's first argument is the target instance,
+     * and null means get the state from the first instance (the coordinator).
+     * The second argument is the timeout */
     public void getState(OutputStream output) throws Exception {
         synchronized (ChannelToUserMap) {
             Builder builder = ChatState.newBuilder();
@@ -100,18 +103,19 @@ public class SynchronizationMessageReceiver extends ReceiverAdapter {
     }
 
     @Override
+    /** Called whenever a new instance joins the cluster, or an existing instance leaves (crashes included).
+     * Its toString() method prints out the view ID (an increasing ID) and a list of the current instances in the cluster
+     */
     public void viewAccepted(View view) {
         synchronized (ChannelToUserMap) {
-            List<String> currentUsers = new LinkedList<>();
-            if (debug) log("ViewAccepted: " + view.getMembers().toString());
-            if (debug) log("ViewAccepted: " + view.getMembers().toString());
+            List<String> currentUsers = view.getMembers().stream().map(address -> channelsSynchronizer.getName(address)).collect(Collectors.toCollection(LinkedList::new));
 
-            for (Address address : view.getMembers()) {
-                currentUsers.add(chatManagement.getName(address));
-            }
+            if (debug) log("ViewAccepted: Current users " + currentUsers.toString());
 
             for (String channel : ChannelToUserMap.keySet()) {
                 List<String> disconnectedUsers = new LinkedList<>(ChannelToUserMap.get(channel));
+                if (debug) log("ViewAccepted: Disconnected users from channel " + channel + ": " + disconnectedUsers.toString());
+
                 disconnectedUsers.removeAll(currentUsers);
 
                 for (String disc : disconnectedUsers) {

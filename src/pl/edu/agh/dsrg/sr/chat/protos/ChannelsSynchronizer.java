@@ -8,6 +8,7 @@ import org.jgroups.stack.Protocol;
 import org.jgroups.stack.ProtocolStack;
 import pl.edu.agh.dsrg.sr.chat.protos.ChatOperationProtos.ChatAction;
 import pl.edu.agh.dsrg.sr.chat.protos.ChatOperationProtos.ChatAction.ActionType;
+import pl.edu.agh.dsrg.sr.chat.protos.controllers.AppController;
 
 import java.net.InetAddress;
 import java.util.LinkedHashMap;
@@ -31,6 +32,7 @@ public class ChannelsSynchronizer {
 
         /** Join synchronization channel */
         synchronizationChannel = new JChannel(false);
+        synchronizationChannel.setName(AppController.login);
         configureChannel(synchronizationChannel, null);
         synchronizationChannel.connect("ChatManagement321321");
         if (debug){
@@ -40,6 +42,12 @@ public class ChannelsSynchronizer {
     }
 
     public void leaveSynchronizationChannel() throws Exception {
+        for(String s : channels.keySet())
+            sendSynchronizationMessage(ActionType.LEAVE, s);
+
+        for(JChannel c : channels.values())
+            c.close();
+
         synchronizationChannel.close();
     }
 
@@ -75,6 +83,7 @@ public class ChannelsSynchronizer {
             /** Channel exiists but not connected */
             else {
                 channels.get(number).connect(number);
+                channelExists = true;
                 log("User " + login + " joined channel " + number);
                 return channels.get(number);
             }
