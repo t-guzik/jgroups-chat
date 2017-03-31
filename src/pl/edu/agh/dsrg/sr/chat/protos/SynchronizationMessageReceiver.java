@@ -51,7 +51,8 @@ public class SynchronizationMessageReceiver extends ReceiverAdapter {
                 else if (actionType == LEAVE) {
                     if (ChannelToUserMap.containsKey(channel)) {
                         ChannelToUserMap.get(channel).remove(user);
-                        //if (ChannelToUserMap.get(channel).isEmpty())ChannelToUserMap.remove(channel);
+                        if (ChannelToUserMap.get(channel).isEmpty())
+                            ChannelToUserMap.remove(channel);
                     }
                 }
             } catch (Exception e) {
@@ -85,6 +86,8 @@ public class SynchronizationMessageReceiver extends ReceiverAdapter {
     }
 
     @Override
+    /** The setState() method is called on the state requester, ie. the instance which called JChannel.getState().
+     * Its task is to read the state from the input stream and set i */
     public void setState(InputStream input) throws Exception {
         synchronized (ChannelToUserMap) {
             ChatState state = ChatState.parseFrom(input);
