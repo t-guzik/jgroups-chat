@@ -49,7 +49,7 @@
             </GridPane.margin>
         </TreeView>
         <ComboBox fx:id="channelComboBox" prefWidth="80.0" style="-fx-background-color: rgb(29, 81, 132);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-        <Label prefHeight="22.0" prefWidth="128.0" style="-fx-background-color: rgb(29, 81, 132);" text="Active channels" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <Label alignment="CENTER" prefHeight="22.0" prefWidth="132.0" text="Active channels" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="ChunkFive-Roman" size="14.0" />
          </font></Label>

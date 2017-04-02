@@ -1,4 +1,9 @@
-.tab .tab-label {
+.tab {
+    -fx-background-color: rgba(73,155,234,1);
+    -fx-border-color: rgb(29, 81, 132);
+}
+
+.tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: white;
     -fx-font-size: 12px;
@@ -14,7 +19,20 @@
     -fx-font-family: 'ChunkFive Roman';
 }
 
-.combo-box-popup .list-view .list-cell
-{
+.combo-box-popup .list-view .list-cell {
+    -fx-border-color: white;
     -fx-background-color: rgb(29, 81, 132);
 }
+
+.tree-view {
+    -fx-background-color: rgb(29, 81, 132);
+    -fx-background-radius: 3px;
+}
+
+.tree-cell {
+    -fx-background-color: rgba(73,155,234,1);
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-font-family: 'ChunkFive Roman';
+}
+
