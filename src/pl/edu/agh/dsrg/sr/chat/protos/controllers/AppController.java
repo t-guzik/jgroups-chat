@@ -76,6 +76,7 @@ public class AppController {
             tabController.setChannel(channel);
 
             Tab tab = new Tab("Channel " + channelComboBox.getValue());
+            tab.setStyle("-fx-background-color: rgb(29, 81, 132)");
             channelsTabPane.getTabs().add(tab);
             channelsTabPane.getTabs().get(channelsTabPane.getTabs().size() - 1).setContent(root);
 

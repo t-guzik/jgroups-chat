@@ -1,0 +1,20 @@
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-family: 'ChunkFive Roman';
+}
+.tab-header-background {
+    -fx-background-color: rgba(73,155,234,1);
+}
+
+.combo-box .list-cell{
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-family: 'ChunkFive Roman';
+}
+
+.combo-box-popup .list-view .list-cell
+{
+    -fx-background-color: rgb(29, 81, 132);
+}
