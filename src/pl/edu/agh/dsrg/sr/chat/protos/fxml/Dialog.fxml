@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="280.0" style="-fx-background-color: rgba(73,155,234,1);" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.dsrg.sr.chat.protos.controllers.DialogController">
+<GridPane fx:id="dialogGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="280.0" stylesheets="@../style/dialog.css" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.dsrg.sr.chat.protos.controllers.DialogController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -28,20 +28,20 @@
             <Font name="ChunkFive-Roman" size="12.0" />
          </font>
         </TextField>
-        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnFun" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: rgb(29, 81, 132);" text="Save" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnFun" prefHeight="25.0" prefWidth="80.0" text="Save" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets bottom="10.0" />
             </GridPane.margin>
          <font>
-            <Font name="ChunkFive-Roman" size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
         </Button>
-        <Label text="Welcome to C.H.A.T. !" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <Label text="Welcome to C.H.A.T. !" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
             <font>
                 <Font name="ChunkFive-Roman" size="24.0" />
             </font>
         </Label>
-        <Label text="Please enter your login" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Label fx:id="infoLbl" text="Please enter your login" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="ChunkFive-Roman" size="13.0" />
          </font></Label>

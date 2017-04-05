@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 public class Main extends Application {
-    public static boolean debug = true;
+    public static boolean debug = false;
     private URL dialogURL = getClass().getResource("fxml/Dialog.fxml");
     private static Stage primaryStage;
 

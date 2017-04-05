@@ -109,7 +109,7 @@ public class ChannelsSynchronizer {
         Protocol UDP = new UDP();
 
         if (address != null) {
-            UDP.setValue("mcast_group_addr", InetAddress.getByName("230.0.0." + address));
+            UDP.setValue("mcast_group_addr", InetAddress.getByName(address));
         }
 
         stack.addProtocol(UDP)

@@ -1,0 +1,14 @@
+/** CLASS **/
+.button {
+    -fx-cursor: hand;
+}
+
+#saveBtn {
+    -fx-background-color: #07b256;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+/** ID **/
+#dialogGrid {
+    -fx-background-color: #505254;
+}

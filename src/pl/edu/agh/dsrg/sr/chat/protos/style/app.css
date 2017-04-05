@@ -1,0 +1,56 @@
+/** CLASS **/
+.button {
+    -fx-cursor: hand;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-font-family: 'ChunkFive Roman';
+}
+
+.tab {
+    -fx-background-color:  #505254;
+    -fx-border-color: #3a3b3d;
+}
+
+.tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-smoothing-type: gray;
+    -fx-font-family: 'ChunkFive Roman';
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #505254;
+}
+
+.tree-cell {
+    -fx-font-size: 10px;
+    -fx-font-family: 'ChunkFive Roman';
+}
+
+ /** ID **/
+#appGrid {
+    -fx-background-color: #505254;
+}
+
+#channelsTabPane {
+    -fx-background-color: #505254;
+}
+
+#channelsTreeView {
+    -fx-background-color: #046d34;
+    -fx-border-radius: 3px;
+}
+
+#joinBtn {
+    -fx-background-color: #046d34;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+#sendBtn {
+    -fx-background-color: #046d34;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}

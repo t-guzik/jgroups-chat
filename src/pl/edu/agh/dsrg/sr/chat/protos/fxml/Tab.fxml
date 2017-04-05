@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="320.0" prefWidth="490.0" style="-fx-background-color: rgba(73,155,234,1);" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.dsrg.sr.chat.protos.controllers.TabController">
+<GridPane fx:id="tabGrid" prefHeight="320.0" prefWidth="490.0" stylesheets="@../style/tab.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.dsrg.sr.chat.protos.controllers.TabController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,12 +23,12 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-        <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#sendBtnFun" prefWidth="80.0" style="-fx-background-color: rgb(29, 81, 132);" text="Send" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#sendBtnFun" prefWidth="80.0" text="Send" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets />
             </GridPane.margin>
          <font>
-            <Font name="ChunkFive-Roman" size="12.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
         </Button>
         <TextArea fx:id="chatTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="5">

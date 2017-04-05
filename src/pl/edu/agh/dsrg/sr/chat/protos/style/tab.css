@@ -1,0 +1,10 @@
+/** CLASS **/
+.button {
+    -fx-cursor: hand;
+}
+
+/** ID **/
+
+#tabGrid {
+    -fx-background-color: #505254;
+}

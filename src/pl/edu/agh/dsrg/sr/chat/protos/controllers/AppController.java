@@ -63,7 +63,7 @@ public class AppController {
      * Join to new channel
      */
     public void joinBtnFun(ActionEvent actionEvent) throws Exception {
-        final JChannel channel = channelsSynchronizer.joinChannel(channelComboBox.getValue().toString());
+        final JChannel channel = channelsSynchronizer.joinChannel("230.0.0." + channelComboBox.getValue().toString());
 
         if (channelExists) {
             /** Create new tab */
